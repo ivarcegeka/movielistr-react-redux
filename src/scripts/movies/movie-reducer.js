@@ -1,10 +1,10 @@
-import {REFRESH_MOVIES, MOVIES_API_ERROR, UPDATE_MOVIE, DELETE_MOVIE, CREATE_MOVIE, SELECT_MOVIE} from './movie-actions';
+import * as types from './movie-action-types';
 
 export const movies = (state = {movies: []}, action) => {
 	switch (action.type) {
-		case REFRESH_MOVIES :
+		case types.REFRESH_MOVIES :
 			return Object.assign({}, state, {movies: action.movies});
-		case MOVIES_API_ERROR:
+		case types.MOVIES_API_ERROR:
 			return Object.assign({}, state, {error: action.error});
 		default:
 			return state;
