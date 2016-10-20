@@ -9,7 +9,7 @@ const mapDispatchToProps = (dispatch) => {
 		onSubmit: movie => {
 			dispatch(createMovie(movie))
 				.then((action) => {
-					dispatch(push('/'));
+					dispatch(push('/movie/' + movie.id));
 				});
 		}
 	}

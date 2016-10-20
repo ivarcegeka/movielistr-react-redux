@@ -1,5 +1,6 @@
 import {connect} from 'react-redux';
 import MovieDetails from './movie-details';
+import {deleteMovie} from '../../movie-actions';
 
 const mapStateToProps = (state, ownProps) => {
 	return {
@@ -7,7 +8,19 @@ const mapStateToProps = (state, ownProps) => {
 	};
 };
 
-var MovieDetailsContainer = connect(mapStateToProps)(MovieDetails);
+const mapDispatchToProps = (dispatch) => {
+	return {
+		deleteMovieFn: id => {
+			dispatch(deleteMovie(id))
+				.then(() => {
+					dispatch(push('/'));
+				});
+
+		}
+	}
+}
+
+var MovieDetailsContainer = connect(mapStateToProps, mapDispatchToProps)(MovieDetails);
 
 export default MovieDetailsContainer;
 

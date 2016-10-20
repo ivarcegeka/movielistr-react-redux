@@ -1,10 +1,14 @@
 import React, {PropTypes} from 'react';
 import {Link} from 'react-router';
 
-const MovieDetails = ({selectedMovie = {director: {}}}) => (
+const MovieDetails = ({deleteMovieFn, selectedMovie = {director: {}}}) => (
 	<div className="movie-details">
 		<Link to="/">Back to the list</Link>
 		<Link to={'/edit/' + selectedMovie.id}>Edit</Link>
+		<Link onClick={() => {
+			deleteMovieFn(selectedMovie.id)
+		}}>Delete</Link>
+
 		<h1>{selectedMovie.title}</h1>
 		<table className="table">
 			<tbody>

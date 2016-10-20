@@ -44,7 +44,6 @@ export const updateMovie = (movie) => {
 			.updateMovie(movie)
 			.then(
 				(response) => {
-					console.log('2' + JSON.stringify(dispatch));
 					return dispatch(fetchMovies());
 				},
 				error => dispatch(handleError(error))
