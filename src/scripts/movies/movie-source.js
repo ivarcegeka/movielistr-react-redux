@@ -1,3 +1,6 @@
+import fetch from 'isomorphic-fetch';
+import checkStatus from 'fetch-check-http-status';
+
 const BASE_URL = 'http://localhost:8091/application/movies';
 const JSON_HEADERS = {
 	'Accept': 'application/json',
@@ -10,7 +13,7 @@ class MovieSource {
 	}
 
 	getMovies() {
-		return fetch(BASE_URL);
+		return fetch(BASE_URL).then(checkStatus);
 	}
 
 	createMovie(movie) {
@@ -19,7 +22,7 @@ class MovieSource {
 				method: 'POST',
 				headers: JSON_HEADERS,
 				body: JSON.stringify(movie)
-			});
+			}).then(checkStatus);
 	}
 
 	updateMovie(movie) {
@@ -28,14 +31,14 @@ class MovieSource {
 				method: 'PUT',
 				headers: JSON_HEADERS,
 				body: JSON.stringify(movie)
-			});
+			}).then(checkStatus);
 	}
 
 	deleteMovie(id) {
-		return fetch(BASE_URL + '/' + movie.id,
+		return fetch(BASE_URL + '/' + id,
 			{
 				method: 'DELETE'
-			});
+			}).then(checkStatus);
 	}
 
 }
