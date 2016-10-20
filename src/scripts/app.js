@@ -1,3 +1,5 @@
+import '../assets/movielistr.scss';
+
 import React from 'react';
 import {render} from 'react-dom';
 import {Route, Router, hashHistory, IndexRoute} from 'react-router';
