@@ -2,9 +2,11 @@ import React, {PropTypes} from 'react';
 import {Link} from 'react-router';
 
 const MovieListItem = ({id, title}) => (
-	<li>
-		<Link to={'/movie/' + id} >{title}</Link>
-	</li>
+	<tr>
+		<td>
+			<Link to={'/movie/' + id}>{title}</Link>
+		</td>
+	</tr>
 );
 
 MovieListItem.propTypes = {

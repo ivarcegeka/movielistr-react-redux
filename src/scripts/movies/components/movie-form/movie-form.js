@@ -1,7 +1,8 @@
 import React, {PropTypes} from 'react';
 import {Field, reduxForm} from 'redux-form';
+import {Link} from 'react-router';
 
-var MovieForm = ({handleSubmit}) => {
+var MovieForm = ({handleSubmit, initialValues}) => {
 
 	const ratingOptions = [];
 	for (var i = 0; i <= 10; i++) {
@@ -10,47 +11,51 @@ var MovieForm = ({handleSubmit}) => {
 
 	return (
 		<div className="movie-form">
-			<form onSubmit={handleSubmit}>
-				<table>
-					<tbody>
-					<tr>
-						<td>Title:</td>
-						<td><Field name="title" component="input" type="text" placeholder="Title"/>
-						</td>
-					</tr>
-					<tr>
-						<td>Director:</td>
-						<td>
-							<Field name="director.firstName" component="input" type="text" placeholder="First Name"/>
-							<Field name="director.lastName" component="input" type="text" placeholder="Last Name"/>
-						</td>
-					</tr>
-					<tr>
-						<td>Rating:</td>
-						<td>
-							<Field name="rating" component="select">
-								{ratingOptions}
-							</Field>
-						</td>
-					</tr>
-					<tr>
-						<td>Duration:</td>
-						<td><Field name="duration" component="input" type="number" placeholder="Duration"/></td>
-					</tr>
-					<tr>
-						<td>Year:</td>
-						<td><Field name="year" component="input" type="number" placeholder="Year"/></td>
-					</tr>
-					<tr>
-						<td>Seen:</td>
-						<td>
-							<Field name="seen" component="input" type="checkbox"/>
-						</td>
-					</tr>
-					</tbody>
-				</table>
 
-				<button type="submit">Submit</button>
+			<Link className="back-to-list" to={'/'}>Back to the list</Link>
+
+			<h1>
+				{initialValues ? 'Update movie' : 'Add movie'}
+			</h1>
+
+			<form onSubmit={handleSubmit}>
+				<div className="form-group">
+					<label>Title</label>
+					<Field name="title" component="input" type="text" placeholder="Title" className="form-control"/>
+				</div>
+				<div className="form-group director-form-group">
+					<label>Director</label>
+					<Field name="director.firstName" component="input" type="text" placeholder="First Name"
+						   className="form-control director-first-name-input"/>
+					<Field name="director.lastName" component="input" type="text" placeholder="Last Name"
+						   className="form-control"/>
+				</div>
+				<div className="form-group">
+					<label>Rating</label>
+					<Field name="rating" component="select" className="form-control">
+						{ratingOptions}
+					</Field>
+				</div>
+				<div className="form-group">
+					<label>Duration</label>
+					<Field name="duration" component="input" type="number" placeholder="Duration"
+						   className="form-control"/>
+				</div>
+				<div className="form-group">
+					<label>Year</label>
+					<Field name="year" component="input" type="number" placeholder="Year" className="form-control"/>
+				</div>
+				<div className="form-group">
+					<label>Seen</label>
+
+					<div className="checkbox">
+						<label>
+							<Field name="seen" component="input" type="checkbox"/>
+						</label>
+					</div>
+				</div>
+
+				<button className="btn btn-default" type="submit">Submit</button>
 			</form>
 		</div>
 	)

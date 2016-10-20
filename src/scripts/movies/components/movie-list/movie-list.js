@@ -3,15 +3,18 @@ import {Link} from 'react-router';
 import MovieListItem from './movie-list-item';
 
 const MovieList = ({movies: {movies}}) => (
-	<div>
-		<ul>
+	<div className="movie-list">
+		<h1>Movies</h1>
+		<table className="table">
+			<tbody>
 			{movies.map(movie =>
 				<MovieListItem key={movie.id} title={movie.title} id={movie.id}/>
 			)}
-			<li>
-				<Link to={'/create'}>+</Link>
-			</li>
-		</ul>
+			<tr>
+				<td><Link to={'/create'}>+</Link></td>
+			</tr>
+			</tbody>
+		</table>
 	</div>
 );
 

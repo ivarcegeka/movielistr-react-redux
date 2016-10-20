@@ -8,7 +8,7 @@
   "scripts": {
     "dev": "webpack -d --watch",
     "build": "webpack -d",
-    "serve": "webpack-dev-server --config ./webpack.config.js"
+    "serve": "webpack-dev-server -d --config ./webpack.config.js"
   },
   "dependencies": {
     "babel-core": "^6.17.0",
@@ -19,6 +19,7 @@
     "clean-webpack-plugin": "^0.1.13",
     "css-loader": "^0.25.0",
     "extract-text-webpack-plugin": "^1.0.1",
+    "favicons-webpack-plugin": "^0.0.7",
     "fetchival": "^0.3.2",
     "html-webpack-plugin": "^2.22.0",
     "jquery": "^3.1.1",

@@ -3,6 +3,7 @@ const path = require('path');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpack = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 
 var BUILD_DIR = path.resolve(__dirname, 'dist/');
 var APP_DIR = path.resolve(__dirname, 'src/');
@@ -10,7 +11,7 @@ var APP_DIR = path.resolve(__dirname, 'src/');
 const rootDir = path.resolve(__dirname);
 
 var config = {
-	entry: APP_DIR + '/scripts/app.js',
+	entry: APP_DIR + '/scripts/index.js',
 
 	output: {
 		path: BUILD_DIR,
@@ -25,7 +26,7 @@ var config = {
 				loader: 'babel'
 			},
 			{
-				test: /\.(html)$/,
+				test: /\.(html|ico)$/,
 				loader: 'raw',
 				include: APP_DIR
 			},
@@ -46,7 +47,7 @@ var config = {
 			inject: 'body',
 			template: path.resolve(rootDir, 'src', 'index.html')
 		}),
-		new ExtractTextPlugin('[name].css'),
+		new ExtractTextPlugin('[name].css')
 	],
 
 	devServer: {

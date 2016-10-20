@@ -6,7 +6,7 @@ const MovieDetails = ({selectedMovie = {director: {}}}) => (
 		<Link to="/">Back to the list</Link>
 		<Link to={'/edit/' + selectedMovie.id}>Edit</Link>
 		<h1>{selectedMovie.title}</h1>
-		<table>
+		<table className="table">
 			<tbody>
 			<tr>
 				<td>Director:</td>
