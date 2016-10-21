@@ -7,9 +7,9 @@ import {push} from 'react-router-redux';
 const mapDispatchToProps = (dispatch) => {
 	return {
 		onSubmit: movie => {
-			dispatch(createMovie(movie))
+			return dispatch(createMovie(movie))
 				.then((action) => {
-					dispatch(push('/movie/' + movie.id));
+					dispatch(push('/'));
 				});
 		}
 	}

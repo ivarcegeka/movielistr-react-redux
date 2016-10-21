@@ -1,61 +1,86 @@
 import React, {PropTypes} from 'react';
 import {Field, reduxForm} from 'redux-form';
 import {Link} from 'react-router';
+import {validate} from './movie-form-validator';
 
-var MovieForm = ({handleSubmit, initialValues}) => {
+
+const MovieForm = ({handleSubmit, initialValues, pristine, submitting, error, touched}) => {
 
 	const ratingOptions = [];
 	for (var i = 0; i <= 10; i++) {
 		ratingOptions.push(<option key={i} value={i}>{i}</option>);
 	}
 
+	const renderFieldWithTitle = ({input, label, type, meta, className}) => (
+		<div className="form-group">
+			<label>{label}</label>
+			{renderFieldWithoutTitle({input, label, type, meta, className})}
+		</div>
+	);
+
+	const renderFieldWithoutTitle = ({input, label, type, meta: {touched, error}, className}) => (
+		<div>
+			<input {...input}
+				   placeholder={label}
+				   type={type}
+				   className={className + ' ' + (type != 'checkbox' ? 'form-control' : '')}/>
+			{error && touched && <div className="movie-form-error-msg">{error}</div>}
+		</div>
+	)
+
 	return (
 		<div className="movie-form">
 
 			<Link className="back-to-list" to={'/'}>Back to the list</Link>
 
-			<h1>
-				{initialValues ? 'Update movie' : 'Add movie'}
-			</h1>
+			<h1>{initialValues ? 'Update movie' : 'Add movie'}</h1>
 
 			<form onSubmit={handleSubmit}>
-				<div className="form-group">
-					<label>Title</label>
-					<Field name="title" component="input" type="text" placeholder="Title" className="form-control"/>
+				<Field name="title"
+					   component={renderFieldWithTitle}
+					   type="text"
+					   label="Title"/>
+
+				<div className="form-group director-form-group">
+					<label>Director</label>
+					<div className="firstName-field-container">
+						<Field name="director.firstName"
+							   component={renderFieldWithoutTitle}
+							   type="text"
+							   label="First name"
+							   className="director-first-name-input"/>
+					</div>
+					<Field name="director.lastName"
+						   component={renderFieldWithoutTitle}
+						   type="text"
+						   label="Last name"/>
 				</div>
 				<div className="form-group director-form-group">
 					<label>Director</label>
-					<Field name="director.firstName" component="input" type="text" placeholder="First Name"
-						   className="form-control director-first-name-input"/>
-					<Field name="director.lastName" component="input" type="text" placeholder="Last Name"
-						   className="form-control"/>
-				</div>
-				<div className="form-group">
-					<label>Rating</label>
-					<Field name="rating" component="select" className="form-control">
+					<Field name="rating"
+						   component="select"
+						   className="form-control"
+						   label="Rating">
 						{ratingOptions}
 					</Field>
 				</div>
-				<div className="form-group">
-					<label>Duration</label>
-					<Field name="duration" component="input" type="number" placeholder="Duration"
-						   className="form-control"/>
-				</div>
-				<div className="form-group">
-					<label>Year</label>
-					<Field name="year" component="input" type="number" placeholder="Year" className="form-control"/>
-				</div>
-				<div className="form-group">
-					<label>Seen</label>
-
-					<div className="checkbox">
-						<label>
-							<Field name="seen" component="input" type="checkbox"/>
-						</label>
-					</div>
-				</div>
-
-				<button className="btn btn-default" type="submit">Submit</button>
+				<Field name="duration"
+					   component={renderFieldWithTitle}
+					   type="number"
+					   label="Duration"/>
+				<Field name="year"
+					   component={renderFieldWithTitle}
+					   type="number"
+					   label="Year"/>
+				<Field name="seen"
+					   component={renderFieldWithTitle}
+					   type="checkbox"
+					   label="Seen"/>
+				<button className="btn btn-default"
+						type="submit"
+						disabled={pristine || submitting}>
+					Submit
+				</button>
 			</form>
 		</div>
 	)
@@ -77,8 +102,7 @@ MovieForm.propTypes = {
 	})
 };
 
-MovieForm = reduxForm({
-	form: 'movie-form'
+export default reduxForm({
+	form: 'movie-form',
+	validate
 })(MovieForm);
-
-export default MovieForm;

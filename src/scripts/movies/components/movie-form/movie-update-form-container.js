@@ -13,9 +13,9 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch) => {
 	return {
 		onSubmit: movie => {
-			dispatch(updateMovie(movie))
+			return dispatch(updateMovie(movie))
 				.then((action) => {
-					dispatch(push('/'));
+					dispatch(push('/movie/' + movie.id));
 				});
 		}
 	}

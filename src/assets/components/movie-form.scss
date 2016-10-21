@@ -5,11 +5,19 @@
     margin-top: 5px;
   }
 
-  .director-form-group {
+  .movie-form-error-msg {
+    font-size: 10pt;
+    color: firebrick;
+  }
 
-    .director-first-name-input {
+  .director-first-name-input {
+    margin-bottom: 5px;
+  }
+
+  .firstName-field-container {
+    .movie-form-error-msg {
       margin-bottom: 5px;
+      margin-top: -5px;
     }
-
   }
 }
