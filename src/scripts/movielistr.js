@@ -1,7 +1,7 @@
 import thunk from 'redux-thunk';
 import {reducer as formReducer} from 'redux-form';
 import {routerReducer, routerMiddleware} from 'react-router-redux';
-import {movies} from './movies/movie-reducer';
+import movies from './movies/movies';
 import {combineReducers, applyMiddleware, createStore} from 'redux';
 import {hashHistory} from 'react-router';
 

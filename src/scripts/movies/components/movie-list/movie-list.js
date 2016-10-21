@@ -7,14 +7,16 @@ const MovieList = ({movies: {movies}}) => (
 		<h1>Movies</h1>
 		<table className="table">
 			<tbody>
-			{movies.map(movie =>
-				<MovieListItem key={movie.id} title={movie.title} id={movie.id}/>
-			)}
 			<tr>
-				<td><Link to={'/create'}>+</Link></td>
+				<th>Title</th>
+				<th>Seen</th>
 			</tr>
+			{movies.map(movie =>
+				<MovieListItem key={movie.id} title={movie.title} id={movie.id} seen={movie.seen}/>
+			)}
 			</tbody>
 		</table>
+		<Link to={'/create'}><i className="glyphicon glyphicon-plus"></i></Link>
 	</div>
 );
 
@@ -35,7 +37,6 @@ MovieList.propTypes = {
 			}).isRequired)
 			.isRequired
 	}).isRequired
-}
-;
+};
 
 export default MovieList;

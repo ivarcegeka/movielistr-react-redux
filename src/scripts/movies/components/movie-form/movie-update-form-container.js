@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import MovieForm from './movie-form';
-import {updateMovie} from '../../movie-actions';
+import {updateMovie} from '../../movies';
 import {push} from 'react-router-redux';
 
 

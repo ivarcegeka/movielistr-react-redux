@@ -4,12 +4,15 @@ import {Link} from 'react-router';
 const MovieDetails = ({deleteMovieFn, selectedMovie = {director: {}}}) => (
 	<div className="movie-details">
 		<Link to="/">Back to the list</Link>
-		<Link to={'/edit/' + selectedMovie.id}>Edit</Link>
-		<Link onClick={() => {
-			deleteMovieFn(selectedMovie.id)
-		}}>Delete</Link>
 
-		<h1>{selectedMovie.title}</h1>
+		<div className="movie-details-title">
+			<h1>{selectedMovie.title}</h1>
+			<Link to={'/edit/' + selectedMovie.id}><i className="glyphicon glyphicon-edit"></i></Link>
+			<Link onClick={() => {
+				deleteMovieFn(selectedMovie.id)
+			}}><i className="glyphicon glyphicon-trash"></i></Link>
+
+		</div>
 		<table className="table">
 			<tbody>
 			<tr>

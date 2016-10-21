@@ -1,3 +1,0 @@
-export const REFRESH_MOVIES = 'REFRESH_MOVIES';
-export const MOVIES_API_ERROR = 'MOVIES_API_ERROR';
-export const SELECT_MOVIE = 'SELECT_MOVIE';

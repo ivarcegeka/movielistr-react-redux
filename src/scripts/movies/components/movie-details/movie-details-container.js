@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import MovieDetails from './movie-details';
-import {deleteMovie} from '../../movie-actions';
+import {deleteMovie} from '../../movies';
 
 const mapStateToProps = (state, ownProps) => {
 	return {

@@ -6,7 +6,7 @@ import {render} from 'react-dom';
 import Routes from './routes';
 import {Provider} from 'react-redux';
 import MovieStore from './movielistr';
-import {fetchMovies} from './movies/movie-actions';
+import {fetchMovies} from './movies/movies';
 
 
 class App extends React.Component {

@@ -1,6 +1,6 @@
 import {Route, Router, IndexRoute, hashHistory} from 'react-router';
 import React from 'react';
-import MainLayout from './main/main-layout';
+import MainLayout from './app/main-layout';
 import MovieListContainer from './movies/components/movie-list/movie-list-container';
 import MovieDetailsContainer from './movies/components/movie-details/movie-details-container';
 import MovieUpdateFormContainer from './movies/components/movie-form/movie-update-form-container';

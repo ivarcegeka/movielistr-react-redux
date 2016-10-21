@@ -7,7 +7,7 @@ const JSON_HEADERS = {
 	'Content-Type': 'application/json',
 };
 
-class MovieSource {
+class MovieAPI {
 
 	constructor() {
 	}
@@ -43,6 +43,6 @@ class MovieSource {
 
 }
 
-let movieSource = new MovieSource();
+let movieAPI = new MovieAPI();
 
-export default movieSource;
+export default movieAPI;

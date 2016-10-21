@@ -1,18 +1,34 @@
-import MovieSource from './movie-source';
-import * as types from './movie-action-types';
+import MovieAPI from './movie-api';
+
+// Actions
+export const REFRESH_MOVIES = 'movielistr/movies/REFRESH_MOVIES';
+export const MOVIES_API_ERROR = 'movielistr/movies/MOVIES_API_ERROR';
+export const SELECT_MOVIE = 'movielistr/movies/SELECT_MOVIE';
+
+// Reducer
+export default (state = {movies: []}, action) => {
+	switch (action.type) {
+		case REFRESH_MOVIES :
+			return Object.assign({}, state, {movies: action.movies});
+		case MOVIES_API_ERROR:
+			return Object.assign({}, state, {error: action.error});
+		default:
+			return state;
+	}
+};
 
 // Action creators
 
 export const refreshMovies = (movies) => {
 	return {
-		type: types.REFRESH_MOVIES,
+		type: REFRESH_MOVIES,
 		movies
 	}
 };
 
 export const handleError = (error) => {
 	return {
-		type: types.MOVIES_API_ERROR,
+		type: MOVIES_API_ERROR,
 		error
 	}
 };
@@ -21,7 +37,7 @@ export const handleError = (error) => {
 
 export const fetchMovies = () => {
 	return dispatch => {
-		return MovieSource
+		return MovieAPI
 			.getMovies()
 			.then(
 				(response) => {
@@ -40,7 +56,7 @@ export const fetchMovies = () => {
 
 export const updateMovie = (movie) => {
 	return dispatch => {
-		return MovieSource
+		return MovieAPI
 			.updateMovie(movie)
 			.then(
 				(response) => {
@@ -53,7 +69,7 @@ export const updateMovie = (movie) => {
 
 export const deleteMovie = (id) => {
 	return dispatch => {
-		return MovieSource
+		return MovieAPI
 			.deleteMovie(id)
 			.then(
 				response => {
@@ -66,7 +82,7 @@ export const deleteMovie = (id) => {
 
 export const createMovie = (movie) => {
 	return dispatch => {
-		return MovieSource
+		return MovieAPI
 			.createMovie(movie)
 			.then(
 				response => {
@@ -76,3 +92,4 @@ export const createMovie = (movie) => {
 			);
 	};
 };
+
