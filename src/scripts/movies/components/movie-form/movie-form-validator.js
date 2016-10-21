@@ -4,7 +4,6 @@ export const validate = (values = {director: {}}) => {
 	Object.assign(errors, validateDirector(values.director));
 	Object.assign(errors, validateDuration(values.duration));
 	Object.assign(errors, validateYear(values.year));
-	console.log(JSON.stringify(errors));
 	return errors;
 };
 
