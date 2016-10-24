@@ -24,7 +24,7 @@ const validateDuration = (duration) => {
 }
 
 const validateYear = (year) => {
-	return numberInRange(year, 1880, 2100, 'year', 'Year must be between 1880 and 2100');
+	return numberInRange(year, 1880, 2100, 'year', 'Year must be between 1880 and 2100.');
 }
 
 const requiredString = (text, fieldName, errorMessage) => {
